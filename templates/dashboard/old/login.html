@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>	
+<head>
+<title>Adminitrator Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static "templates/login/css/style.css" %}" rel='stylesheet' type='text/css' />
+<link href="{% static "templates/login/css/alert.css" %}" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+<script>$(document).ready(function(c) {
+	$('.close').on('click', function(c){
+		$('.login-form').fadeOut('slow', function(c){
+	  		$('.login-form').remove();
+		});
+	});	  
+});
+</script>
+ <!--SIGN UP-->
+	<h1>Research Center for Informatics - RenderFarm Administration</h1>
+ 	{% if form.errors %}
+		<div class="error-notice" style="width: 500px;margin: 50px auto">
+	        <div class="oaerror danger">
+	            <strong>Error</strong> - You provided a wrong username/password
+	        </div>
+        </div>
+	{% endif %}
+<div class="login-form">
+	<div class="close"> </div>
+		<div class="head-info">
+			<label class="lbl-1"> </label>
+			<label class="lbl-2"> </label>
+			<label class="lbl-3"> </label>
+		</div>
+		<div class="clear"> </div>
+			<div class="avtar">
+				<img src="{% static "templates/login/images/avtar.png" %}" />
+			</div>
+			<form method="post" action="{% url 'admin:login' %}">
+    			{% csrf_token %}
+				<input type="text" class="text" name="username" placeholder="Username" >
+				<div class="key">
+					<input type="password" name="password">
+				</div>
+			
+	<div class="signin">
+		<input type="submit" value="Login" >
+	</div>
+	</form>
+</div>
+	<!--
+	<div class="copy-rights">
+		<p>Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a> </p>
+	</div>-->
+
+</body>
+</html>

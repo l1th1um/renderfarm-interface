@@ -1,0 +1,81 @@
+{% extends "frontend/index.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+
+{% load static %}
+
+{% block content %}
+	 <!--=== Slider ===-->
+    <div class="slider-inner">
+        <div id="da-slider" class="da-slider">
+            <div class="da-slide">
+                <h2><i>SUPPORTED By</i> <br /> <i>GRID LIPI</i></h2>
+                <p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i> <br /> <i>veniam omnis </i></p>
+                <div class="da-img">
+                	<img class="img-responsive" src="{% static "templates/frontend/img/grid/cluster002.jpg" %}" width="70%">
+                </div>
+            </div>
+            <div class="da-slide">
+                <h2><i>100 CPU's POWER</i> <br /> <i>20 GPU's POWER</i></h2>
+                <p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i> <br /> <i>veniam omnis </i></p>
+                <div class="da-img">
+                	<img src="{% static "templates/frontend/img/grid/cluster003.jpg" %}" width="70%">
+                </div>
+            </div>
+            <div class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>        
+            </div>
+        </div>
+    </div><!--/slider-->
+    <!--=== End Slider ===-->
+
+    <!--=== Purchase Block ===-->
+    <div class="purchase">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 animated fadeInLeft">
+                    <span>LIPI Renderfarm</span>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos.</p>
+                </div>            
+            </div>
+        </div>
+    </div><!--/row-->
+    <!-- End Purchase Block -->
+
+    <!--=== Content Part ===-->
+    <div class="container content-sm">
+    	<!-- Service Blocks -->
+    	<div class="row margin-bottom-30">
+        	<div class="col-md-4">
+        		<div class="service">
+                    <i class="fa fa-compress service-icon"></i>
+        			<div class="desc">
+        				<h4>Powerfull Infrastructure</h4>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+        			</div>
+        		</div>	
+        	</div>
+        	<div class="col-md-4">
+        		<div class="service">
+                    <i class="fa fa-cogs service-icon"></i>
+        			<div class="desc">
+        				<h4>Highly Secured</h4>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+        			</div>
+        		</div>	
+        	</div>
+        	<div class="col-md-4">
+        		<div class="service">
+                    <i class="fa fa-rocket service-icon"></i>
+        			<div class="desc">
+        				<h4>Technical and Customer Support</h4>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+        			</div>
+        		</div>	
+        	</div>			    
+    	</div>
+    	
+    </div><!--/container-->
+    <!-- End Content Part -->
+{% endblock %}

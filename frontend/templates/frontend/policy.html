@@ -1,0 +1,51 @@
+{% extends "frontend/index.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+
+{% load static %}
+
+{% block content %}
+	  <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Usage Policy</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Pages</a></li>
+                <li class="active">Usage Policy</li>
+            </ul>
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content">		
+    	<div class="row-fluid privacy">
+            <p class="lead"><em>The renderfarm facility is managed and hosted by Research Center of Informatics – Indonesian Institute of Sciences (LIPI)</em></p>
+            <p>Those who are intended to gain access to and usage the renderfarm shall agree with the following rules and making use of registration and application system which Research Center of Informatics – Indonesian Institute of Sciences (LIPI) provides.</p><br />
+
+            <h4>User Qualifications </h4>
+            <p><ol>
+                <li>Indonesian citizen who hold Indonesian citizenship including those who live and work overseas.</li>
+                <li>For security reasons and authentication purposes, valid and acceptable Indonesian identification (resident identity card/driving license/passport) is required</li>
+            </ol>
+            </p><br />
+
+            <h4>Online registration</h4>
+            <p>Those who meet all the (user qualifications) requirements above should make registration through “LIPI Renderfarm” web application system and submit all information and documents that inquired in the application form.  Please note, an application form with incomplete/empty data fields cannot be processed further until all data completely filled.</p><br />
+
+            <h4>Usage Policy</h4>
+            <p><ol>
+                <li>The number of non GPU nodes default is 4 nodes. Maximum 16 nodes on requirement</li>
+                <li>User can submit two jobs concurrently (1 job running in the Batch, 1 job in queue)</li>
+                <li>Storage quota for each user's account at home directory is 100 GB</li>
+                <li>The usage period for the Grid@LIPI batch is 6 months (can be extended by resubmitting proposal) for each account.</li>
+                <li>Data at home directory (also) will be granted to user in the usage period, the grace period is 1 month after the usage ended before the account were deactivated (and data is lost).</li>
+                <li>A short report needed after usage period, please submit your report as a feedback for Grid LIPI.</li>
+            </ol>
+            </p><br />
+
+        </div><!--/row-fluid-->        
+    </div><!--/container-->		
+    <!--=== End Content Part ===-->
+{% endblock %}

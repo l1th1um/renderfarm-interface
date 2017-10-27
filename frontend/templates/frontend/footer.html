@@ -1,0 +1,105 @@
+{% load static %}
+<!--=== Footer ===-->
+    <div class="footer-v1">
+        <div class="footer">
+            <div class="container">
+                <div class="row">                    
+                    <!-- Link List -->
+                    <div class="col-md-6 md-margin-bottom-40">
+                        <div class="headline"><h2>Useful Links</h2></div>
+                        <ul class="list-unstyled link-list">
+                            <li>
+                                <a href="http://grid.lipi.go.id">Grid LIPI</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="http://www.informatika.lipi.go.id">Research for Informatics (P2I LIPI)</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="http://www.lipi.go.id">Indonesian Institute of Sciences (LIPI)</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>          
+                        </ul>
+                    </div><!--/col-md-3-->
+                    <!-- End Link List -->                    
+
+                    <!-- Address -->
+                    <div class="col-md-6 map-img md-margin-bottom-40">
+                        <div class="headline"><h2>Contact Us</h2></div>                         
+                        <address class="md-margin-bottom-40">
+                            Komplek LIPI, Jalan Cisitu No 21/154D <br />
+                            Bandung 40135,Jawa Barat - Indonesia <br />
+                            Tel: +62-22-2504711, Fax: +62-22-2504712 <br />
+                            Email: <a href="mailto:grid@mail.lipi.go.id" class="">grid[at]mail.lipi.go.id</a>
+                        </address>
+                    </div><!--/col-md-3-->
+                    <!-- End Address -->
+                </div>
+            </div> 
+        </div><!--/footer-->
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2017 &copy; All Rights Reserved. P2 Informatika LIPI
+                        </p>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="col-md-6">
+                        <ul class="footer-socials list-inline">
+                            <li>
+                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Social Links -->
+                </div>
+            </div> 
+        </div><!--/copyright-->
+    </div>
+    <!--=== End Footer Version 1 ===-->
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->			
+<script type="text/javascript" src="{% static "templates/frontend/plugins/jquery/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/jquery/jquery-migrate.min.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/bootstrap/js/bootstrap.min.js" %}"></script>
+
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{% static "templates/frontend/plugins/back-to-top.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/smoothScroll.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/parallax-slider/js/modernizr.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/parallax-slider/js/jquery.cslider.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/plugins/owl-carousel/owl-carousel/owl.carousel.js" %}"></script>
+
+<!-- JS Customization -->
+<script type="text/javascript" src="{% static "templates/frontend/js/custom.js" %}"></script>
+
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{% static "templates/frontend/js/app.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/js/plugins/owl-carousel.js" %}"></script>
+<script type="text/javascript" src="{% static "templates/frontend/js/plugins/parallax-slider.js" %}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        OwlCarousel.initOwlCarousel();        
+        ParallaxSlider.initParallaxSlider();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="{% static "templates/frontend/plugins/respond.js" %}"></script>
+    <script src="{% static "templates/frontend/plugins/html5shiv.js" %}"></script>
+    <script src="{% static "templates/frontend/plugins/placeholder-IE-fixes.js" %}"></script>
+<![endif]-->

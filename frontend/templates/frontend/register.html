@@ -1,0 +1,94 @@
+{% extends "frontend/index.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% block content %}
+	  <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Registration</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Pages</a></li>
+                <li class="active">Registration</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                {% if messages %}
+                    {% for message in messages %}
+                      <div class="alert-{{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                {%  endif %}
+
+                <form class="reg-page" method="POST" action="register" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    {{ form.errors }}
+                    
+                    <div class="reg-header">
+                        <h2>Register a new account</h2>
+                        <p>Already Signed Up? Click <a href="/login" class="color-green">Sign In</a> to login your account.</p>
+                    </div>
+
+                    {{ user_form.email.label_tag }}<span class="color-red">*</span>
+                    {% render_field user_form.email class="form-control margin-bottom-20" placeholder=user_form.email.name.capitalize %}
+                    
+                    {{ user_form.first_name.label_tag }}<span class="color-red">*</span>
+                    {% render_field user_form.first_name class="form-control margin-bottom-20" placeholder=user_form.first_name.label.capitalize %}
+
+                    {{ profile_form.address.label_tag }}<span class="color-red">*</span>
+                    {% render_field profile_form.address class="form-control margin-bottom-20" rows="3" placeholder=profile_form.address.name.capitalize %}
+
+                    {{ profile_form.phone.label_tag }}<span class="color-red">
+                    {% render_field profile_form.phone class="form-control margin-bottom-20" placeholder=profile_form.phone.name.capitalize %}
+
+                    {{ profile_form.office_phone.label_tag }}
+                    {% render_field profile_form.office_phone class="form-control margin-bottom-20" placeholder=profile_form.office_phone.label.capitalize %}
+
+                    {{ profile_form.institution.label_tag }}<span class="color-red">*</span>
+                    {% render_field profile_form.institution class="form-control margin-bottom-20" placeholder=profile_form.institution.name.capitalize %}
+
+                    {{ profile_form.job_title.label_tag }}<span class="color-red">*</span>
+                    {% render_field profile_form.job_title class="form-control margin-bottom-20" placeholder=profile_form.job_title.label %}
+
+                    {{ profile_form.resident_id.label_tag }}<span class="color-red">*</span>
+                    {% render_field profile_form.resident_id class="form-control margin-bottom-20" placeholder=profile_form.resident_id.label %}
+                    
+                    {% render_field profile_form.resident_file %}
+                    *) upload your residential identity/passport
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-lg-6 checkbox">
+                            <label>
+                                {{ profile_form.accept }}
+                                I read <a href="/terms" class="color-green" target="_new">Terms and Conditions</a>
+                            </label>                        
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <button class="btn-u" type="submit">Register</button>                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!--/container-->		
+    <!--=== End Content Part ===-->
+{% endblock %}

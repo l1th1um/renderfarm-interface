@@ -1,0 +1,62 @@
+{% extends "dashboard/dashboard.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+{% block title_page %} {{ title_page }} {% endblock %}
+
+{% block asset %}
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
+{% endblock %}
+
+
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-offset-11 col-md-1">
+				<a href="" class="btn btn-info">Create User</a>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<table class="table table-striped" id="user_table" cellspacing="0" width="100%">
+			        <thead>
+			            <tr>
+			                <th>Username</th>
+			                <th>First name</th>
+			                <th>Last name</th>
+			                <th>Email</th>
+			                <th>Role</th>
+			                <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	{% for user in users %}
+							<tr>
+								<td>{{ user.username }}</td>
+								<td>{{ user.first_name }}</td>
+								<td>{{ user.last_name }}</td>
+								<td>{{ user.email }}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						{% endfor %}	
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+	</div>
+	
+
+	
+{% endblock %}
+
+
+{% block footer_asset %}
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#user_table').DataTable();
+		} );
+	</script>
+{% endblock %}
