@@ -1,23 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
 from .helper import admin_template
 from django.core import urlresolvers
 from django.http import HttpResponse
 
-intro_text = """Named URL patterns for the {% url %} tag
-========================================
-
-e.g. {% url pattern-name %}
-or   {% url pattern-name arg1 %} if the pattern requires arguments
-
-"""
-
 
 def index(request):
 	context_dict = {'boldmessage': "Crunchy, creamy, cookie, candy, cupcake!"}
 	return render(request, 'frontend/index.html', context=context_dict)
-
 
 def register(request):
 	return render(request, 'register.html')

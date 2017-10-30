@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 from .forms.register import ProfileForm, UserForm
 from . import utils
 from django.contrib import messages
-
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as frontend_login
+from projects.forms.user_project import ProjectForm
+from django.contrib.auth.decorators import login_required
+from projects.models import Project
 
 def index(request):
 	context = {'title_page' : 'Home'}
@@ -43,8 +47,26 @@ def register(request):
 	return render(request, 'frontend/register.html', context = context)
 
 def login(request):
+	if request.user.is_active:
+		return redirect('/profile')
+
 	context = {'title_page' : 'Login'}
+	if request.method == 'POST':
+		member_login(request)
 	return render(request, 'frontend/login.html', context = context)
+
+def member_login(request):
+	username = request.POST['username']
+	password = request.POST['password']
+
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		if user.is_active:
+			frontend_login(request, user)
+			return redirect('/project_monitoring')
+	else :
+		messages.success(request, 'Invalid Username or Password')
+		return redirect('/login')
 
 def contact(request):
 	context = {'title_page' : 'Kontak'}
@@ -55,6 +77,34 @@ def about_us(request):
 	context = {'title_page' : 'Tentang Kami'}
 	return render(request, 'frontend/about_us.html', context = context)
 
+@login_required(login_url='/login/')
+def project_monitoring(request):
+	context = {'title_page' : 'Project Monitoring'}
+
+	projects = Project.objects.filter(user_id=request.user.id)
+
+	context['projects'] = projects
+
+	if request.method == 'POST':
+		project_form = ProjectForm(request.POST, request.FILES)
+
+		if project_form.is_valid() :
+			project = project_form.save(commit=False)
+			project.user_id = request.user.id
+			project.original_filename = request.FILES['project_file'].name
+			project.save()
+
+			messages.success(request, 'Project has been uploaded. Waiting for Administrator Approval')
+			return redirect('/project_monitoring')
+		else:
+			print(project_form.errors)
+
+	else:
+		project_form = ProjectForm()
+
+	context['project_form'] = project_form
+
+	return render(request, 'frontend/project_monitoring.html', context = context)
 
 def under_construction(request):
 	context = {'title_page' : 'Sedang Dalam Pengembangan'}

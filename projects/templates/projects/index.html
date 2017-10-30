@@ -1,0 +1,52 @@
+{% extends "dashboard/dashboard.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+{% block title_page %} {{ title_page }} {% endblock %}
+
+{% block asset %}
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
+{% endblock %}
+
+
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<table class="table table-striped" id="user_table" cellspacing="0" width="100%">
+			        <thead>
+			            <tr>
+			                <th>Username</th>
+			                <th>Tanggal Submit</th>
+			                <th>Deskripsi</th>
+			                <th>Status</th>
+			                <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	{% for project in projects %}
+							<tr>
+								<td>{{ project.user.username }}</td>
+								<td>{{ project.created_at | date:'d/m/Y H:i'}}</td>
+								<td>{{ project.description }}</td>
+								<td>{{ project.status }}</td>
+								<td></td>
+							</tr>
+						{% endfor %}	
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}
+
+
+{% block footer_asset %}
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#user_table').DataTable();
+		} );
+	</script>
+{% endblock %}

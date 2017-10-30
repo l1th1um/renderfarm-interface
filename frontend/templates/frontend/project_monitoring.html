@@ -1,0 +1,86 @@
+{% extends "frontend/index.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<!--=== Profile ===-->
+<div class="container content profile">   
+    <div class="row">
+        <!-- Profile Content -->            
+        <div class="col-md-12">
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert-{{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                  </div>
+                {% endfor %}
+            {%  endif %}
+            <div class="profile-body margin-bottom-20">
+                <div class="tab-v1">
+                    <ul class="nav nav-justified nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#profile">Upload Project</a></li>
+                        <li><a data-toggle="tab" href="#passwordTab">Project List</a></li>
+                    </ul>          
+                    <div class="tab-content">
+                        <div id="profile" class="profile-edit tab-pane fade in active">
+                            <h2 class="heading-md">Upload your project here.</h2>
+                            <p>Fill the project description.</p>
+                            <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                    		{% csrf_token %}
+                                {{ project_form.errors }}
+							
+							  <div class="form-group">
+                                  <label for="inputEmail3" class="col-sm-2 control-label">Project File <small>(*.zip)</small></label>
+							    <div class="col-sm-10">
+							      {% render_field project_form.project_file %}
+							    </div>
+							  </div>
+							  <div class="form-group">
+							    <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
+							    <div class="col-sm-10">
+                                    {% render_field project_form.description class="form-control margin-bottom-20" rows="5" placeholder=project_form.description.name.capitalize %}
+							    </div>
+							  </div>
+							  <div class="form-group">
+							    <div class="col-sm-offset-2 col-sm-10">
+							      <button type="submit" class="btn btn-success">Upload Project</button>
+							    </div>
+							  </div>
+							</form>
+                        </div>
+
+                        <div id="passwordTab" class="profile-edit tab-pane fade">
+                            <table class="table table-striped" id="user_table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal Submit</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for project in projects %}
+                                    <tr>
+                                        <td>{{ project.created_at | date:'d/m/Y H:i'}}</td>
+                                        <td>{{ project.description }}</td>
+                                        <td>{{ project.status }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>    
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- End Profile Content -->            
+    </div><!--/end row-->
+</div>      
+<!--=== End Profile ===-->
+{% endblock %}

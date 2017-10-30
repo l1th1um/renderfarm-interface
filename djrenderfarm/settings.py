@@ -20,6 +20,10 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',') if os.getenv('ALLOWED_HOST
 # Application definition
 
 INSTALLED_APPS = [
+    'main_app',
+    'users',
+    'frontend',
+    'projects',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,9 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    'main_app',
-    'users',
-    'frontend'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ LOGIN_URL = '/dashboard/login'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 

@@ -57,10 +57,16 @@
             
             <!-- Topbar -->
             <div class="topbar">
-                <ul class="loginbar pull-right">  
-                    <li><a href="/register">Register</a></li>  
-                    <li class="topbar-devider"></li>   
-                    <li><a href="/login">Login</a></li>   
+                <ul class="loginbar pull-right">
+                    {% if request.user.is_active %}
+                        <li><a href="#">{{ request.user.first_name }} </a></li>  
+                        <li class="topbar-devider"></li>   
+                        <li><a href="{% url 'frontend_logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="/register">Register</a></li>  
+                        <li class="topbar-devider"></li>   
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- End Topbar -->

@@ -47,7 +47,8 @@
                         <p>Already Signed Up? Click <a href="/login" class="color-green">Sign In</a> to login your account.</p>
                     </div>
 
-                    {{ user_form.email.label_tag }}<span class="color-red">*</span>
+                    {{ user_form.email.label_tag }}<span class="color-red">*</span> 
+                    <small style="font-size: 8px">(Untuk kenyamanan, hindari email Yahoo!)</small>
                     {% render_field user_form.email class="form-control margin-bottom-20" placeholder=user_form.email.name.capitalize %}
                     
                     {{ user_form.first_name.label_tag }}<span class="color-red">*</span>
@@ -56,10 +57,10 @@
                     {{ profile_form.address.label_tag }}<span class="color-red">*</span>
                     {% render_field profile_form.address class="form-control margin-bottom-20" rows="3" placeholder=profile_form.address.name.capitalize %}
 
-                    {{ profile_form.phone.label_tag }}<span class="color-red">
+                    {{ profile_form.phone.label_tag }}<span class="color-red">*</span>
                     {% render_field profile_form.phone class="form-control margin-bottom-20" placeholder=profile_form.phone.name.capitalize %}
 
-                    {{ profile_form.office_phone.label_tag }}
+                    {{ profile_form.office_phone.label_tag }}<span class="color-red">*</span>
                     {% render_field profile_form.office_phone class="form-control margin-bottom-20" placeholder=profile_form.office_phone.label.capitalize %}
 
                     {{ profile_form.institution.label_tag }}<span class="color-red">*</span>

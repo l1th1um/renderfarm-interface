@@ -28,21 +28,24 @@ urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^$',  frontend_views.index),
     url(r'^register$',  frontend_views.register),
-    url(r'^login$',  frontend_views.login),
+    url(r'^login/$',  frontend_views.login, name="frontend_login"),
     url(r'^contact$',  frontend_views.contact),
     url(r'^about_us$',  frontend_views.about_us),
-    url(r'^project_monitoring$',  frontend_views.under_construction),
+    url(r'^project_monitoring$',  frontend_views.project_monitoring),
     url(r'^profile$',  frontend_views.profile),
     url(r'^services$',  frontend_views.services),
     url(r'^policy$',  frontend_views.policy),
     url(r'^statistic$',  frontend_views.under_construction),
     url(r'^news$',  frontend_views.news),
     url(r'^terms$',  frontend_views.terms),
+    url(r'^logout$', auth_views.logout, {'next_page': 'frontend_login'}, name="frontend_logout"),
     url(r'^url_list',  views.urls),
-    url(r'^dashboard/login', auth_views.login, {'template_name': 'dashboard/login.html'}, name='login_view'),
+    url(r'^dashboard/login', auth_views.login, {'template_name': 'dashboard/login.html'}, name='dashboard_login'),
+    url(r'^dashboard/logout/$', auth_views.logout, {'next_page': 'dashboard_login'}, name="dashboard_logout"),
     url(r'^dashboard/', admin.site.urls),
     url(r'^dashboard/home', views.home),
-    url(r'^dashboard/users/', include('users.urls'))
+    url(r'^dashboard/users/', include('users.urls')),
+    url(r'^dashboard/projects/', include('projects.urls'))
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,89 @@
+{% extends "dashboard/dashboard.html" %}
+
+{% block title %} {{ title_page }} {% endblock %}
+{% block title_page %} {{ title_page }} {% endblock %}
+
+{% block asset %}
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
+{% endblock %}
+
+
+
+{% block content %}
+{% load static %}
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<div class="widget-box">
+			        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+			          <h5>Personal Info</h5>
+			        </div>
+			        <div class="widget-content nopadding">
+			          <form action="" method="post" class="form-horizontal">
+			          	{% csrf_token %}
+			            <div class="control-group">
+			              <label class="control-label">Nama :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.first_name }}" readonly="readonly">
+			              </div>
+			            </div>
+			           	<div class="control-group">
+			              <label class="control-label">Email :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.email }}" readonly="readonly">
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">Alamat :</label>
+			              <div class="controls">
+			                <textarea readonly="" class="span11" rows="4">{{user.profile.address}}</textarea>
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">Phone :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.profile.phone }}" readonly="readonly">
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">Office Phone :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.profile.office_phone }}" readonly="readonly">
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">Institution :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.profile.institution }}" readonly="readonly">
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">Job Title :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.profile.job_title }}" readonly="readonly">
+			              </div>
+			            </div>
+			            <div class="control-group">
+			              <label class="control-label">No Identitas :</label>
+			              <div class="controls">
+			                <input type="text" class="span11" value="{{ user.profile.resident_id }}" readonly="readonly">
+			                <div style="padding-top: 20px">
+			                	<img src="{% get_static_prefix %}{{ user.profile.resident_file }}" %}" alt="Logo" style="max-height: 500px">
+			            	</div>
+			              </div>
+			            </div>
+			            <div class="form-actions">
+			              	<button type="button" class="btn btn-primary" onclick="window.history.back()"> 
+			              		&lt; Back
+			          		</button>
+			              <button type="submit" class="btn btn-success">Aktifasi</button>
+			            </div>
+			          </form>
+			        </div>
+			      </div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}
