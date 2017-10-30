@@ -13,7 +13,7 @@ class Profile(models.Model):
 	institution = models.CharField(max_length=150)
 	job_title = models.CharField(max_length=30)
 	resident_id = models.CharField(max_length=50)
-	resident_file = models.ImageField(upload_to='uploads/resident_file/', blank=True)
+	resident_file = models.ImageField(upload_to='static/uploads/resident_file/', blank=True)
 
 	'''
 	def __str__(self):

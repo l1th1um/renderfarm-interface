@@ -26,6 +26,7 @@
 			                <th>First name</th>
 			                <th>Last name</th>
 			                <th>Email</th>
+			                <th>Institution</th>
 			                <th>Role</th>
 			                <th></th>
 			            </tr>
@@ -33,10 +34,11 @@
 			        <tbody>
 			        	{% for user in users %}
 							<tr>
-								<td>{{ user.username }}</td>
+								<td><a href="/dashboard/users/{{user.id}}/edit" class="label label-warning">{{ user.username }}</a></td>
 								<td>{{ user.first_name }}</td>
 								<td>{{ user.last_name }}</td>
 								<td>{{ user.email }}</td>
+								<td>{{ user.profile.institution }}</td>
 								<td></td>
 								<td></td>
 							</tr>
@@ -46,8 +48,6 @@
 			</div>
 		</div>
 	</div>
-	
-
 	
 {% endblock %}
 

@@ -21,6 +21,7 @@ def register(request):
 		if user_form.is_valid() and profile_form.is_valid():
 			user = user_form.save(commit=False)
 			user.username = utils.generate_username(request.POST['first_name'])
+			user.is_active = 0
 			user.save()
 
 			profile = profile_form.save(commit=False)
