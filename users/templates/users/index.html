@@ -27,7 +27,7 @@
 			                <th>Last name</th>
 			                <th>Email</th>
 			                <th>Institution</th>
-			                <th>Role</th>
+			                <th style="width: 100px">Status</th>
 			                <th></th>
 			            </tr>
 			        </thead>
@@ -39,7 +39,13 @@
 								<td>{{ user.last_name }}</td>
 								<td>{{ user.email }}</td>
 								<td>{{ user.profile.institution }}</td>
-								<td></td>
+								<td>
+                                    {% if user.is_active == 0 %}
+                                        <span class="btn btn-warning">Belum Aktif</span>
+                                    {% else %}
+                                        <span class="btn btn-success">Aktif</span>
+                                    {%  endif %}
+                                </td>
 								<td></td>
 							</tr>
 						{% endfor %}	
