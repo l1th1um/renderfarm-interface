@@ -7,6 +7,11 @@ import uuid
 class Project(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+	STATUS_LIST = (
+					(0, 'Pending'),
+					(1, 'Project Validation')
+		)
+
 	project_uuid = models.UUIDField(default=uuid.uuid4)
 	url = models.CharField(max_length=250, blank=True)
 	description = models.TextField(max_length=500)

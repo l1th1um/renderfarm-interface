@@ -13,6 +13,11 @@ from projects.models import Project
 @user_passes_test(lambda u: u.is_superuser)
 def index(request):
 	projects = Project.objects.all()
+
+	for project in projects:
+		project.status_string = Project.STATUS_LIST[project.status][1]
+		project.save()
+
 	context = {'title_page' : 'Project Management', 'projects' : projects}
 	return render(request, 'projects/index.html', context = context)
 

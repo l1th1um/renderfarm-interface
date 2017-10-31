@@ -959,6 +959,16 @@ span.icon .checker {
 	left:5px; width:50%;
 	top: -2px;
 }
+
+.dataTables_length  label {
+	font-size: 10px;
+}
+
+.dataTables_length  label select {
+	font-size: 10px;
+	width: auto;
+}
+
 .dataTables_length div {
 	vertical-align: middle;
 }
@@ -1022,12 +1032,18 @@ div.dataTables_wrapper .ui-widget-header {
 }
 .dataTables_filter {
 	color: #878787;
-	font-size: 11px;
-	right: 0; top:37px;
+	font-size: 9px;
+	right: 0;
+	/*top:37px;*/
 	margin: 4px 8px 2px 10px;
 	position: absolute;
 	text-align: left;
 }
+
+.dataTables_filter label {
+	font-size: 10px;
+}
+
 .dataTables_filter input {
 	margin-bottom: 0;
 }
