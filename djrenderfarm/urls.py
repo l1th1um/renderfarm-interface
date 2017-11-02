@@ -42,8 +42,8 @@ urlpatterns = [
     url(r'^url_list',  views.urls),
     url(r'^dashboard/login', auth_views.login, {'template_name': 'dashboard/login.html'}, name='dashboard_login'),
     url(r'^dashboard/logout/$', auth_views.logout, {'next_page': 'dashboard_login'}, name="dashboard_logout"),
-    url(r'^dashboard/', admin.site.urls),
-    url(r'^dashboard/home', views.home),
+    #url(r'^dashboard/', admin.site.urls),
+    url(r'^dashboard', views.home),
     url(r'^dashboard/users/', include('users.urls')),
     url(r'^dashboard/projects/', include('projects.urls'))
 ]

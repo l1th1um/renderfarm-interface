@@ -4,7 +4,7 @@ from django.conf import settings
 from .helper import admin_template
 from django.core import urlresolvers
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 def index(request):
 	context_dict = {'boldmessage': "Crunchy, creamy, cookie, candy, cupcake!"}
@@ -16,6 +16,8 @@ def register(request):
 def login(request):
 	return HttpResponse("<h1>Login" +  admin_template() +"</h1>")
 
+@login_required()
+@user_passes_test(lambda u: u.is_superuser)
 def home(request):
 	return render(request, 'main_app/home.html')
 

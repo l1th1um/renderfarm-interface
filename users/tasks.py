@@ -13,11 +13,8 @@ logger = get_task_logger(__name__)
 
 @task(name='create_user_bash')
 def create_user_bash(user_id):
-	print(" Step 4 ")
-	logging.info("Goes Here")
-	logger.info("Goes Here")
 	UserModel = get_user_model()
-	print("It Goes Here")
+
 	try:
 		user = UserModel.objects.get(pk=user_id)
 
@@ -25,9 +22,7 @@ def create_user_bash(user_id):
 		
 		p = Popen(cmd, stdout=PIPE, stderr=PIPE)
 		output = p.stdout.readlines()
-		print(" Step 5 ")
 		try :
-			print(" Step 6 ")
 			con_msg = output[-1].decode("utf-8").split(' ')
 			password = con_msg[2]
 			hashed_password = make_password(password)

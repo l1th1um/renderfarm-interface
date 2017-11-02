@@ -14,9 +14,12 @@ class Project(models.Model):
 
 	project_uuid = models.UUIDField(default=uuid.uuid4)
 	url = models.CharField(max_length=250, blank=True)
+	main_file = models.CharField(max_length=250)
+	start_frame = models.IntegerField(default=0)
+	end_frame = models.IntegerField(default=0)
 	description = models.TextField(max_length=500)
 	original_filename = models.CharField(max_length=250, blank=True)
-	project_file = models.FileField(upload_to='static/uploads/project_file/',validators=[FileExtensionValidator(['zip'])], blank=True)
+	project_file = models.FileField(upload_to='static/uploads/project_file/',validators=[FileExtensionValidator(['zip'])])
 	status = models.SmallIntegerField(default=0)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)

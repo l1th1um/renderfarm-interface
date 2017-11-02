@@ -9,6 +9,8 @@ from django.contrib.auth import login as frontend_login
 from projects.forms.user_project import ProjectForm
 from django.contrib.auth.decorators import login_required
 from projects.models import Project
+from subprocess import Popen, PIPE, STDOUT
+from projects.tasks import render_blender
 
 def index(request):
 	context = {'title_page' : 'Home'}
@@ -48,7 +50,7 @@ def register(request):
 
 def login(request):
 	if request.user.is_active:
-		return redirect('/profile')
+		return redirect('/project_monitoring')
 
 	context = {'title_page' : 'Login'}
 	if request.method == 'POST':
@@ -94,7 +96,9 @@ def project_monitoring(request):
 			project.original_filename = request.FILES['project_file'].name
 			project.save()
 
-			messages.success(request, 'Project has been uploaded. Waiting for Administrator Approval')
+			render_blender.delay(project.id, request.user.username)
+
+			messages.success(request, 'Project has been uploaded. Please be Patient for Rendering Process :-D ')
 			return redirect('/project_monitoring')
 		else:
 			print(project_form.errors)

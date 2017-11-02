@@ -9,16 +9,16 @@
 <!--=== Profile ===-->
 <div class="container content profile">   
     <div class="row">
-        <!-- Profile Content -->            
+        <!-- Profile Content -->
         <div class="col-md-12">
             {% if messages %}
                 {% for message in messages %}
-                  <div class="alert-{{ message.tags }} alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{ message }}
-                  </div>
+                    <div class="alert-{{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                    </div>
                 {% endfor %}
             {%  endif %}
             <div class="profile-body margin-bottom-20">
@@ -32,26 +32,52 @@
                             <h2 class="heading-md">Upload your project here.</h2>
                             <p>Fill the project description.</p>
                             <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
-                    		{% csrf_token %}
+                    		    {% csrf_token %}
                                 {{ project_form.errors }}
 							
-							  <div class="form-group">
-                                  <label for="inputEmail3" class="col-sm-2 control-label">Project File <small>(*.zip)</small></label>
-							    <div class="col-sm-10">
-							      {% render_field project_form.project_file %}
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">
+                                        Project File <small>(*.zip)</small>
+                                    </label>
+                                    <div class="col-sm-10">
+							            {% render_field project_form.project_file %}
+							        </div>
 							    </div>
-							  </div>
-							  <div class="form-group">
-							    <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
-							    <div class="col-sm-10">
-                                    {% render_field project_form.description class="form-control margin-bottom-20" rows="5" placeholder=project_form.description.name.capitalize %}
+							    <div class="form-group">
+							        <label for="inputPassword3" class="col-sm-2 control-label">Main Blend File</label>
+							        <div class="col-sm-10">
+                                        {% render_field project_form.main_file class="form-control" placeholder="Main blend file (.blend)" %}
+							        </div>
 							    </div>
-							  </div>
-							  <div class="form-group">
-							    <div class="col-sm-offset-2 col-sm-10">
-							      <button type="submit" class="btn btn-success">Upload Project</button>
+                                <div class="form-group">
+							        <label for="inputPassword3" class="col-sm-2 control-label">
+                                        Start Frame
+                                    </label>
+							        <div class="col-sm-2">
+                                        {% render_field project_form.start_frame class="form-control" placeholder="Start Frame" %}
+							        </div>
 							    </div>
-							  </div>
+                                <div class="form-group">
+							        <label for="inputPassword3" class="col-sm-2 control-label">
+                                        End Frame
+                                    </label>
+							        <div class="col-sm-2">
+                                        {% render_field project_form.end_frame class="form-control" placeholder="End Frame" %}
+							        </div>
+							    </div>
+                                <div class="form-group">
+							        <label for="inputPassword3" class="col-sm-2 control-label">
+                                        Description
+                                    </label>
+							        <div class="col-sm-10">
+                                        {% render_field project_form.description class="form-control margin-bottom-20" rows="5" placeholder=project_form.description.name.capitalize %}
+							        </div>
+							    </div>
+                                <div class="form-group">
+							        <div class="col-sm-offset-2 col-sm-10">
+							        <button type="submit" class="btn btn-success">Upload Project</button>
+                                </div>
+                            </div>
 							</form>
                         </div>
 

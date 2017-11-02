@@ -43,7 +43,7 @@
 			<div class="avtar">
 				<img src="{% static "templates/login/images/avtar.png" %}" />
 			</div>
-			<form method="post" action="{% url 'admin:login' %}">
+			<form method="post" action="{% url 'dashboard_login' %}">
     			{% csrf_token %}
 				<input type="text" class="text" name="username" placeholder="Username" >
 				<div class="key">
